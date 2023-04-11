@@ -43,6 +43,7 @@ export default class GalleryApiServise {
   showEndMessage(total) {
     return this.page * this.options.get('per_page') < total;
   }
-
+  resetPage() {
+    return (this.page = 1);
+  }
 }
-// asxas;lxkaslkx
