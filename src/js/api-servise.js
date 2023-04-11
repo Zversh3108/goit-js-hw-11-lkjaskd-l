@@ -15,8 +15,9 @@ export default class GalleryApiServise {
   }
 
   async getPhotos() {
-    this.options.set('q', this.searchData);
     this.options.set('page', this.page.toString());
+    this.options.set('q', this.searchData);
+
     const response = await axios.get(
       `https://pixabay.com/api/?${this.options.toString()}`
     );
@@ -28,22 +29,20 @@ export default class GalleryApiServise {
     }
     return { hits, totalHits, total };
   }
-
+  newPage() {
+    this.page += 1;
+    return this.page;
+  }
   get data() {
     return this.searchData;
   }
   set data(newData) {
     this.searchData = newData;
   }
- 
-  newPage() {
-    this.page += 1;
-    return this.page;
-  }
-  resetPage() {
-    return (this.page = 1);
-  }
+
   showEndMessage(total) {
     return this.page * this.options.get('per_page') < total;
   }
+
 }
+// asxas;lxkaslkx
